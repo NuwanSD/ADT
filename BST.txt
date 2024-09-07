@@ -1,0 +1,98 @@
+Here's an algorithm to create a Binary Search Tree (BST) in C. The algorithm involves defining a structure for the tree node and functions to insert nodes into the tree.
+
+### Algorithm:
+1. **Define the Node Structure:**
+   - Each node contains a data value, a pointer to the left child, and a pointer to the right child.
+
+2. **Create a New Node:**
+   - Allocate memory for a new node.
+   - Assign the data to the node.
+   - Initialize the left and right child pointers to `NULL`.
+
+3. **Insert a Node:**
+   - Start from the root.
+   - Compare the data to be inserted with the data at the current node.
+   - If the data is less than the current node's data, move to the left child.
+   - If the data is greater, move to the right child.
+   - If a `NULL` position is found, insert the new node there.
+
+### C Code:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a tree node
+struct TreeNode {
+    int data;
+    struct TreeNode *left;
+    struct TreeNode *right;
+};
+
+// Function to create a new node
+struct TreeNode* createNode(int data) {
+    struct TreeNode* newNode = (struct TreeNode*)malloc(sizeof(struct TreeNode));
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+// Function to insert a node into the BST
+struct TreeNode* insertNode(struct TreeNode* root, int data) {
+    // If the tree is empty, return a new node
+    if (root == NULL) {
+        return createNode(data);
+    }
+
+    // Otherwise, recur down the tree
+    if (data < root->data) {
+        root->left = insertNode(root->left, data);
+    } else if (data > root->data) {
+        root->right = insertNode(root->right, data);
+    }
+
+    // Return the (unchanged) root pointer
+    return root;
+}
+
+// Function to perform in-order traversal of the tree
+void inOrderTraversal(struct TreeNode* root) {
+    if (root != NULL) {
+        inOrderTraversal(root->left);
+        printf("%d ", root->data);
+        inOrderTraversal(root->right);
+    }
+}
+
+int main() {
+    struct TreeNode* root = NULL;
+    root = insertNode(root, 50);
+    insertNode(root, 30);
+    insertNode(root, 70);
+    insertNode(root, 20);
+    insertNode(root, 40);
+    insertNode(root, 60);
+    insertNode(root, 80);
+
+    // Print in-order traversal of the tree
+    printf("In-order Traversal: ");
+    inOrderTraversal(root);
+    printf("\n");
+
+    return 0;
+}
+```
+
+### Explanation:
+- **Structure Definition (`TreeNode`):** This structure has three members: `data` for storing the node's value, and two pointers (`left` and `right`) pointing to the left and right children.
+  
+- **Creating a Node (`createNode`):** This function allocates memory for a new node, assigns the given data to it, and initializes the child pointers to `NULL`.
+  
+- **Inserting a Node (`insertNode`):** This function takes the root of the tree and the data to be inserted. It recursively finds the correct position and inserts the node, maintaining the BST property.
+
+- **In-order Traversal (`inOrderTraversal`):** This function performs an in-order traversal of the BST, printing the nodes' values in ascending order.
+
+- **Main Function:** This initializes the tree, inserts nodes, and performs an in-order traversal to verify the tree structure.
+
+You can compile and run this code to see how a BST is created and traversed in C.

@@ -1,0 +1,31 @@
+Bubble sort is a simple sorting algorithm in C that repeatedly steps through a list of elements, compares adjacent elements, and swaps them if they are in the wrong order. The process is repeated until the list is sorted. Here's how it works:
+
+1. Start at the beginning of the list.
+2. Compare the first two elements.
+   - If the first element is greater than the second, swap them.
+   - If not, move to the next pair of elements.
+3. Repeat this process for every adjacent pair of elements in the list.
+4. After each complete pass through the list, the largest unsorted element "bubbles up" to its correct position at the end.
+5. Repeat the entire process until no swaps are needed, meaning the list is sorted.
+
+The algorithm is called "bubble sort" because the largest values bubble up to the top of the list. It's easy to implement but not very efficient for large lists.
+
+
+
+Selection sort is another simple sorting algorithm in C that works by repeatedly finding the minimum (or maximum) element from the unsorted portion of the list and placing it at the beginning. Here's how it works:
+
+1. **Start with the first element** of the list and assume it's the smallest.
+2. **Compare it with every other element** in the list to find the smallest element.
+3. **Swap the smallest element** found with the first element.
+4. Move to the next position and repeat the process for the remaining unsorted portion of the list.
+5. Continue this process until the entire list is sorted.
+
+Here's a step-by-step example:
+
+- Suppose you have an array `[29, 10, 14, 37, 13]`.
+- In the first pass, the algorithm finds the smallest element (10) and swaps it with the first element (29). The array becomes `[10, 29, 14, 37, 13]`.
+- In the second pass, it finds the next smallest element (13) and swaps it with the second element (29). The array becomes `[10, 13, 14, 37, 29]`.
+- This process continues until the list is completely sorted.
+
+Selection sort is easy to understand and implement, but it's not the most efficient for large lists, as it has a time complexity of O(n²). It is, however, more efficient than bubble sort in terms of the number of swaps it makes.
+
